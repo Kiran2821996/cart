@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useContext } from "react";
+import {fecthedData} from "../../context/Context";
 import axios from "axios";
 import ReactStars from "react-stars";
 
@@ -11,29 +12,48 @@ function Jwellery() {
       setJwellery([...res.data]);
     });
   }, []);
+  const { data,setData } = useContext(fecthedData);
+
+  const handleClick = (item) => {
+    if (!data.includes(item)) {
+  setData([...data, item]);
+    } else {
+      alert("item already added");
+    }
+  };
+
   return (
     <div className="all_cards">
-      {jwellery.map(({ id, title, price, image, rating }) => {
+     {jwellery.map((item) => {
         return (
-          <div className="all_card">
+          <div className="all_card" key={item.id}>
             <Card className="all_card_item">
               <div className="all_card_img">
-                <img src={image} alt="unavailable" width={100} height={100} />
+                <img
+                  src={item.image}
+                  alt="unavailable"
+                  width={100}
+                  height={100}
+                />
               </div>
-              <p>{title.length < 22 ? title : `${title.slice(0, 15)}...`}</p>
+              <p>
+                {item.title.length < 22
+                  ? item.title
+                  : `${item.title.slice(0, 15)}...`}
+              </p>
 
               <ReactStars
                 count={5}
                 size={24}
-                value={rating.rate}
+                value={item.rating.rate}
                 color2={"#ffd700"}
               />
 
-              <p>₹{price}</p>
-              <Button type="primary">Add to Cart</Button>
+              <p>₹{item.price}</p>
+              <div onClick={(e) => handleClick(item)}>
+                <Button type="primary">Add to Cart</Button>
+              </div>
             </Card>
-
-            {/* onClick={() => handleClick(id)} */}
           </div>
         );
       })}
