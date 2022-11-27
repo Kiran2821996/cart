@@ -1,0 +1,21 @@
+.all_cards{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.all_card{
+    margin: 1%;
+}
+
+.all_card_item{
+    width: 200px;
+    height: 320px;
+background-color:rgba(128, 128, 128, 0.209);
+font-weight: bolder;
+}
+.all_card_img{
+    text-align: center;
+}
+

@@ -1,0 +1,12 @@
+.header_main {
+  display: flex;
+  height: 10vh;
+justify-content: flex-end;
+  border: 5px solid black;
+}
+.header_links {
+  display: flex;
+  height: 10vh;
+  align-items: center;
+  justify-content: space-around;
+}
