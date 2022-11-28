@@ -4,6 +4,7 @@ import { fecthedData } from "../../context/Context";
 function IncDecItem({ priceData }) {
   const [count, setCount] = useState(1);
   const { data, setData } = useContext(fecthedData);
+  const[total,setTotal]=useState()
   
 
   //   useEffect(() => {
