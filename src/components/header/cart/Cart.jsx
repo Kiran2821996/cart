@@ -9,15 +9,18 @@ import { Button } from "antd";
 
 function Cart() {
   const { data,setData } = useContext(fecthedData);
+  const ids = data.map(o => o.id)
+  let uniqueItems = data.filter(({id}, index) => !ids.includes(id, index + 1))
   
+  // console.log(uniqueChars);
 
 const handleClick=(item)=>{
-data.splice(data.indexOf(item),1)
-setData([...data])
+  uniqueItems.splice(uniqueItems.indexOf(item),1)
+setData([...uniqueItems])
 }
   return (
     <div className="cart_cards">
-     {data.map((item) => {
+     {uniqueItems.map((item) => {
         return (
           <div className="cart_card" key={item.id}>
            

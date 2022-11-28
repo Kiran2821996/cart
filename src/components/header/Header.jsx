@@ -7,6 +7,9 @@ function Header() {
   return (
     <div>
       <div className="header_main">
+      <NavLink to={"./showfavt"} end className="nav_link" >
+          <p>Favourites</p>
+        </NavLink>
         <NavLink to={"./cart"} end className="nav_link" >
           <p>Cart</p>
         </NavLink>

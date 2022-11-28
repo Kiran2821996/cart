@@ -8,6 +8,7 @@ import MensClothing from "./MensClothing/MensClothing";
 import WomensClothing from "./WomensClothing/WomensClothing";
 import Cart from "../header/cart/Cart";
 import Login from "../header/login/Login";
+import ShowFavt from "./favourites/ShowFavt";
 
 
 
@@ -22,6 +23,7 @@ function Main() {
         <Route path="/womensClothing" element={<WomensClothing />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/showfavt" element={<ShowFavt />} />
       </Routes>
     </div>
   );

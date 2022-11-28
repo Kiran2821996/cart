@@ -1,34 +1,27 @@
-import React, { useEffect, useState,useContext } from "react";
-import {fecthedData} from "../../context/Context";
+import React, { useEffect, useState, useContext } from "react";
+import { fecthedData } from "../../context/Context";
 import axios from "axios";
 import ReactStars from "react-stars";
+import Favourites from "../favourites/Favourites";
 
 import { Card, Button } from "antd";
 
-
-
 function All() {
   const [all, setAll] = useState([]);
-  
- 
 
   useEffect(() => {
     axios.get("https://fakestoreapi.com/products").then((res) => {
       setAll([...res.data]);
     });
   }, []);
-  const { data,setData } = useContext(fecthedData);
+  const { data, setData } = useContext(fecthedData);
 
   const handleClick = (item) => {
-   
-     
     if (!data.includes(item)) {
-     
-          setData([...data,item])
+      setData([...data, item]);
     } else {
       alert("item already added");
     }
-   
   };
 
   return (
@@ -37,6 +30,10 @@ function All() {
         return (
           <div className="all_card" key={item.id}>
             <Card className="all_card_item">
+              <div className="heart_icon">
+                <Favourites item={item} />
+              </div>
+
               <div className="all_card_img">
                 <img
                   src={item.image}

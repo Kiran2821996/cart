@@ -11,11 +11,14 @@
 
 .all_card_item{
     width: 200px;
-    height: 320px;
+    height: 340px;
 background-color:rgb(255, 255, 255);
 font-weight: bolder;
 }
 .all_card_img{
     text-align: center;
 }
-
+.heart_icon{
+    text-align: right;
+    cursor: pointer;
+}

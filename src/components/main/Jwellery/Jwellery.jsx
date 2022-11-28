@@ -2,6 +2,7 @@ import React, { useEffect, useState,useContext } from "react";
 import {fecthedData} from "../../context/Context";
 import axios from "axios";
 import ReactStars from "react-stars";
+import Favourites from "../favourites/Favourites";
 
 import { Card, Button } from "antd";
 
@@ -28,6 +29,9 @@ function Jwellery() {
         return (
           <div className="all_card" key={item.id}>
             <Card className="all_card_item">
+            <div className="heart_icon">
+                <Favourites item={item} />
+              </div>
               <div className="all_card_img">
                 <img
                   src={item.image}
