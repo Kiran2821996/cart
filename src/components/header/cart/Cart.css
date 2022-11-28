@@ -1,7 +1,8 @@
 .cart_card{
     display:flex;
-    border: 3px solid black;
-    width: 70%;
+    border: 3px solid white;
+    border-radius: 10px;
+    width: 90%;
     height: 35vh;
     margin: 1%;
     padding: 20px;
@@ -10,20 +11,17 @@
 .cart_card_img{
     margin: 5% 2%;
 }
-/* .price_card{
+.cart_display{
     display: flex;
-   
+    width: 100%;
 }
-.btn_count{
-    width: 20%;
-    padding: 2%;
-    display: flex;
-    justify-content: space-around;
-    background-color: rgb(81, 81, 81);
+
+.cart_left{
+    width:80%;
     
 }
-.btn_count span{
-    color: white;
-    font-size: x-large;
-    font-weight: bolder;
-} */
+.cart_right{
+    margin: 2%;
+    width:20%;
+    
+}

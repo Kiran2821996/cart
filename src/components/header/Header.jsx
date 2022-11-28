@@ -1,20 +1,25 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React,{useContext} from "react";
+import {fecthedData} from "../context/Context";
+import { ShoppingCartOutlined,LoginOutlined,LogoutOutlined} from '@ant-design/icons';
 
+import { NavLink } from "react-router-dom";
 import "./Header.css";
 
 function Header() {
+  const {cart_items} = useContext(fecthedData);
+ 
   return (
+    
     <div>
       <div className="header_main">
       <NavLink to={"./showfavt"} end className="nav_link" >
           <p>Favourites</p>
         </NavLink>
         <NavLink to={"./cart"} end className="nav_link" >
-          <p>Cart</p>
+          <p><ShoppingCartOutlined /><sup>{cart_items.length}</sup></p>
         </NavLink>
         <NavLink to={"./login"} className="nav_link">
-          <p>Login</p>
+          <p><LoginOutlined />/<LogoutOutlined /></p>
         </NavLink>
       </div>
       <div className="header_links">
