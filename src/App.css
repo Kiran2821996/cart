@@ -1,8 +1,14 @@
-.body{
-  height: 100vh;
+body{
+  background-color:rgba(128, 128, 128, 0.209);
 }
 .header{
-  height: 20vh;
-  background-color: red;
+  height: 25vh;
+  background-color:rgb(116, 116, 116);
+  padding: 1%;
 }
+
+.body{
+  padding: 20px;
+}
+
 

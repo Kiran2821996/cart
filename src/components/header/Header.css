@@ -1,12 +1,37 @@
 .header_main {
   display: flex;
   height: 10vh;
-justify-content: flex-end;
-  border: 5px solid black;
+justify-content: space-evenly;
+  width: 30%;
+  margin-left: 70%;
 }
 .header_links {
   display: flex;
   height: 10vh;
   align-items: center;
   justify-content: space-around;
+  border: 5px solid black;
+
+}
+
+.nav_link{
+  text-decoration: none;
+  
+}
+.nav_link.active p{
+background-color: white;
+color: black;
+border: 3px solid black;
+width: 95%;
+padding: 5%;
+}
+
+.nav_link p{
+  border: 3px solid rgba(0, 0, 0, 0.549);
+width: 95%;
+padding: 5%;
+  padding: 5%;
+  color: white;
+  font-size:medium;
+  font-weight: bolder;
 }
