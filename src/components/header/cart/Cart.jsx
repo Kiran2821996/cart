@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { fecthedData } from "../../context/Context";
 import ReactStars from "react-stars";
-import IncDecItem from "./IncDecItem";
+// import IncDecItem from "./IncDecItem";
 
 import "./Cart.css";
 
@@ -43,9 +43,9 @@ function Cart() {
                     value={item.rating.rate}
                     color2={"#ffd700"}
                   />
-                  <IncDecItem priceData={item} />
+                  {/* <IncDecItem priceData={item} /> */}
                   <div onClick={(e) => handleClick(item)}>
-                    <Button type="primary">Remove</Button>
+                    <Button type="primary" danger>Remove</Button>
                   </div>
                 </div>
               </div>
@@ -59,7 +59,7 @@ function Cart() {
           <h3>Order Summary</h3>
           <h4>Total Price :</h4>
           <h2>₹{data.reduce((accu, cur) => accu + cur.price, 0).toFixed(2)}</h2>
-          <Button type="primary">CHECK OUT</Button>
+          <Button type="primary" >CHECK OUT</Button>
           <h6>Tax Exclusive* added at checkout</h6>
         </Card>
       </div>

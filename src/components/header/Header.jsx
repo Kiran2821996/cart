@@ -1,26 +1,33 @@
 import React,{useContext} from "react";
 import {fecthedData} from "../context/Context";
 import { ShoppingCartOutlined,LogoutOutlined} from '@ant-design/icons';
-import {useSelector} from 'react-redux';
-import { NavLink } from "react-router-dom";
+import { NavLink} from "react-router-dom";
 import "./Header.css";
+import { useDispatch } from "react-redux";
 
 
 function Header() {
   const {data} = useContext(fecthedData);
-
-  const userData = useSelector((state) => {
-    return state.loggedInUser
-  })
+  const dispatch = useDispatch();
+ 
   const handleLogout=()=>{
-    window.location.reload();
+    let action = {
+      type: "setLogin",
+      payload: false,
+    };
+
+    dispatch(action);
+   
   }
+  
   return (
     <div>
       
-      <span className="user_name">Hai {userData.firstName}!</span>
+     
       <div className="header_main">
-      
+      <h1 className="user_name">Shop_Lane</h1>
+        <div className="header_main_right">
+     
       <NavLink to={"./showfavt"} end className="nav_link" >
           <p>Favourites</p>
         </NavLink>
@@ -31,6 +38,7 @@ function Header() {
          
           <p><LogoutOutlined />Log Out</p>
         </span>
+        </div>
       </div>
       <div className="header_links">
         <NavLink to={"./all"} end className="nav_link">

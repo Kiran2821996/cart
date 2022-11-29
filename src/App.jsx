@@ -11,7 +11,7 @@ import "./components/main/All/All.css";
 
 function App() {
   const loggedInUser = useSelector((state) => {
-    return state.loggedInUser
+    return state.login
   })
 
   return (

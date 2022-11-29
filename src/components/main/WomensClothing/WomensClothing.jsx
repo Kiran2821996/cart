@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { fecthedData } from "../../context/Context";
 import axios from "axios";
 import ReactStars from "react-stars";
-import Favourites from "../favourites/Favourites";
+import { HeartOutlined , HeartFilled } from '@ant-design/icons';
 
 import { Card, Button } from "antd";
 
@@ -15,7 +15,7 @@ function WomensClothing() {
         setWomensClothing([...res.data]);
       });
   }, []);
-  const { data, setData } = useContext(fecthedData);
+  const { data, setData,likeData,setLikeData } = useContext(fecthedData);
 
   const handleAddClick = (item) => {
     let added = data.filter((ele) => ele.id === item.id);
@@ -31,7 +31,21 @@ function WomensClothing() {
       }
     });
   };
+  const  handleAddHeart=(item)=>{
+    let added = likeData.filter((ele) => ele.id === item.id);
+    if (!added.length > 0) {
+      setLikeData([...likeData, item]);
+    }
+  }
 
+  const handleRemoveHeart=(id)=>{
+    likeData.map((ele) => {
+      if (ele.id === id) {
+        likeData.splice(likeData.indexOf(ele), 1);
+        setLikeData([...likeData]);
+      }
+    });
+  }
   return (
     <div className="all_cards">
       {womensClothing.map((item) => {
@@ -39,7 +53,17 @@ function WomensClothing() {
           <div className="all_card" key={item.id}>
             <Card className="all_card_item">
               <div className="heart_icon">
-                <Favourites item={item} />
+                
+              {likeData.filter((ele) => ele.id === item.id).length > 0 ? (
+                <div onClick={(e) => handleRemoveHeart(item.id)}>
+                   <HeartFilled style={{color:"red"}} />
+                </div>
+              ) : (
+                <div onClick={(e) => handleAddHeart(item)}>
+                 <HeartOutlined />
+                </div>
+              )}
+               
               </div>
               <div className="all_card_img">
                 <img
@@ -65,7 +89,7 @@ function WomensClothing() {
               <p>₹{item.price}</p>
               {data.filter((ele) => ele.id === item.id).length > 0 ? (
                 <div onClick={(e) => handleRemoveClick(item.id)}>
-                  <Button type="primary">Remove from Cart</Button>
+                  <Button type="primary" danger>Remove from Cart</Button>
                 </div>
               ) : (
                 <div onClick={(e) => handleAddClick(item)}>

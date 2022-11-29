@@ -1,9 +1,13 @@
 .header_main {
   display: flex;
   height: 10vh;
-justify-content: space-evenly;
-  width: 30%;
-  margin-left: 70%;
+justify-content: space-between;
+  width: 100%;
+}
+.header_main_right{
+  display: flex;
+justify-content: space-around;
+width: 30%;
 }
 .header_links {
   display: flex;
@@ -37,7 +41,10 @@ padding: 5%;
 }
 
 .user_name{
+ margin-top: -14px;
   color: white;
-  font-size:medium;
+  font-size:60px;
   font-weight: bolder;
+  font-style: italic;
+  width: 20%;
 }
