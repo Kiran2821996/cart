@@ -16,12 +16,15 @@ function All() {
   }, []);
   const { data, setData } = useContext(fecthedData);
 
-  const handleClick = (item) => {
-    if (!data.includes(item)) {
+  const handleAddClick = (item) => {
+    let added = data.filter((ele) => ele.id === item.id);
+    if (!added.length > 0) {
       setData([...data, item]);
-    } else {
-      alert("item already added");
     }
+  };
+  const handleRemoveClick = (item) => {
+    data.splice(data.indexOf(item), 1);
+    setData([...data]);
   };
 
   return (
@@ -56,9 +59,16 @@ function All() {
               />
 
               <p>₹{item.price}</p>
-              <div onClick={(e) => handleClick(item)}>
-                <Button type="primary">Add to Cart</Button>
-              </div>
+
+              {data.filter((ele) => ele.id === item.id).length > 0 ? (
+                <div onClick={(e) => handleRemoveClick(item)}>
+                  <Button type="primary">Remove from Cart</Button>
+                </div>
+              ) : (
+                <div onClick={(e) => handleAddClick(item)}>
+                  <Button type="primary">Add to Cart</Button>
+                </div>
+              )}
             </Card>
           </div>
         );

@@ -9,25 +9,22 @@ import { Card, Button } from "antd";
 
 function Cart() {
   const { data, setData, setCart_items } = useContext(fecthedData);
-  const ids = data.map((o) => o.id);
-  let uniqueItems = data.filter(
-    ({ id }, index) => !ids.includes(id, index + 1)
-  );
+
 
   useEffect(() => {
-    setCart_items([...uniqueItems]);
+    setCart_items([...data]);
   }, []);
 
   const handleClick = (item) => {
-    uniqueItems.splice(uniqueItems.indexOf(item), 1);
-    setData([...uniqueItems]);
-    setCart_items([...uniqueItems]);
+    data.splice(data.indexOf(item), 1);
+    setData([...data]);
+    setCart_items([...data]);
   };
   return (
     <div className="cart_display">
       <div className="cart_left">
         <div className="cart_cards">
-          {uniqueItems.map((item) => {
+          {data.map((item) => {
             return (
               <div className="cart_card" key={item.id}>
                 <div className="cart_card_img">
@@ -61,7 +58,7 @@ function Cart() {
         <Card>
           <h3>Order Summary</h3>
           <h4>Total Price :</h4>
-          <h2>₹{uniqueItems.reduce((accu, cur) => accu + cur.price, 0)}</h2>
+          <h2>₹{data.reduce((accu, cur) => accu + cur.price, 0)}</h2>
           <Button type="primary">CHECK OUT</Button>
           <h6>Tax Exclusive* added at checkout</h6>
         </Card>

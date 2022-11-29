@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 import "./Header.css";
 
 function Header() {
-  const {cart_items} = useContext(fecthedData);
+  const {data} = useContext(fecthedData);
  
   return (
     
@@ -16,7 +16,7 @@ function Header() {
           <p>Favourites</p>
         </NavLink>
         <NavLink to={"./cart"} end className="nav_link" >
-          <p><ShoppingCartOutlined /><sup>{cart_items.length}</sup></p>
+          <p><ShoppingCartOutlined /><sup>{data.length}</sup></p>
         </NavLink>
         <NavLink to={"./login"} className="nav_link">
           <p><LoginOutlined />/<LogoutOutlined /></p>

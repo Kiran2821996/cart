@@ -15,13 +15,16 @@ function Jwellery() {
   }, []);
   const { data,setData } = useContext(fecthedData);
 
-  const handleClick = (item) => {
-    if (!data.includes(item)) {
-  setData([...data, item]);
-    } else {
-      alert("item already added");
-    }
-  };
+  const handleAddClick = (item) => {
+    let added = data.filter(ele=>ele.id===item.id)
+      if (!added.length>0) {
+        setData([...data, item]); 
+      } 
+    };
+    const handleRemoveClick = (item) => {
+      data.splice(data.indexOf(item), 1);
+      setData([...data]);
+      };
 
   return (
     <div className="all_cards">
@@ -54,9 +57,11 @@ function Jwellery() {
               />
 
               <p>₹{item.price}</p>
-              <div onClick={(e) => handleClick(item)}>
+              {data.filter(ele=>ele.id===item.id).length>0? <div onClick={(e) => handleRemoveClick(item)} >
+                <Button type="primary">Remove from Cart</Button>
+              </div>:<div onClick={(e) => handleAddClick(item)}>
                 <Button type="primary">Add to Cart</Button>
-              </div>
+              </div>}
             </Card>
           </div>
         );
