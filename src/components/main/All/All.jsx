@@ -22,9 +22,13 @@ function All() {
       setData([...data, item]);
     }
   };
-  const handleRemoveClick = (item) => {
-    data.splice(data.indexOf(item), 1);
-    setData([...data]);
+  const handleRemoveClick = (id) => {
+data.map(ele=>{
+  if(ele.id===id){
+    data.splice(data.indexOf(ele), 1);
+    setData([...data])
+  }
+})  
   };
 
   return (
@@ -61,7 +65,7 @@ function All() {
               <p>₹{item.price}</p>
 
               {data.filter((ele) => ele.id === item.id).length > 0 ? (
-                <div onClick={(e) => handleRemoveClick(item)}>
+                <div onClick={(e) => handleRemoveClick(item.id)}>
                   <Button type="primary">Remove from Cart</Button>
                 </div>
               ) : (

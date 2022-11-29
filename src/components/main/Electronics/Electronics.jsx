@@ -1,31 +1,36 @@
-import React, { useEffect, useState,useContext } from "react";
-import {fecthedData} from "../../context/Context";
+import React, { useEffect, useState, useContext } from "react";
+import { fecthedData } from "../../context/Context";
 import axios from "axios";
 import ReactStars from "react-stars";
 import Favourites from "../favourites/Favourites";
 
 import { Card, Button } from "antd";
 
-
 function Electronics() {
   const [electronics, setelectronics] = useState([]);
   useEffect(() => {
-    axios.get("https://fakestoreapi.com/products/category/electronics").then((res) => {
-      setelectronics([...res.data]);
-    });
+    axios
+      .get("https://fakestoreapi.com/products/category/electronics")
+      .then((res) => {
+        setelectronics([...res.data]);
+      });
   }, []);
-  const { data,setData } = useContext(fecthedData);
+  const { data, setData } = useContext(fecthedData);
 
   const handleAddClick = (item) => {
-    let added = data.filter(ele=>ele.id===item.id)
-      if (!added.length>0) {
-        setData([...data, item]); 
-      } 
-    };
-    const handleRemoveClick = (item) => {
-      data.splice(data.indexOf(item), 1);
-      setData([...data]);
-      };
+    let added = data.filter((ele) => ele.id === item.id);
+    if (!added.length > 0) {
+      setData([...data, item]);
+    }
+  };
+  const handleRemoveClick = (id) => {
+    data.map((ele) => {
+      if (ele.id === id) {
+        data.splice(data.indexOf(ele), 1);
+        setData([...data]);
+      }
+    });
+  };
 
   return (
     <div className="all_cards">
@@ -33,7 +38,7 @@ function Electronics() {
         return (
           <div className="all_card" key={item.id}>
             <Card className="all_card_item">
-            <div className="heart_icon">
+              <div className="heart_icon">
                 <Favourites item={item} />
               </div>
               <div className="all_card_img">
@@ -58,17 +63,21 @@ function Electronics() {
               />
 
               <p>₹{item.price}</p>
-              {data.filter(ele=>ele.id===item.id).length>0? <div onClick={(e) => handleRemoveClick(item)} >
-                <Button type="primary">Remove from Cart</Button>
-              </div>:<div onClick={(e) => handleAddClick(item)}>
-                <Button type="primary">Add to Cart</Button>
-              </div>}
+              {data.filter((ele) => ele.id === item.id).length > 0 ? (
+                <div onClick={(e) => handleRemoveClick(item.id)}>
+                  <Button type="primary">Remove from Cart</Button>
+                </div>
+              ) : (
+                <div onClick={(e) => handleAddClick(item)}>
+                  <Button type="primary">Add to Cart</Button>
+                </div>
+              )}
             </Card>
           </div>
         );
       })}
     </div>
-  )
+  );
 }
 
-export default Electronics
+export default Electronics;
