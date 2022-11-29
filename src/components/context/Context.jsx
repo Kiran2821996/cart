@@ -5,10 +5,11 @@ const fecthedData = createContext();
 function Context(props) {
   const [data, setData] = useState([]);
   const [likeData,setLikeData] = useState([])
-  const [cart_items,setCart_items] = useState([])
+const [users,setUsers]=useState([])
+ 
 
   return (
-    <fecthedData.Provider value={{ data, setData ,likeData,setLikeData,cart_items,setCart_items}}>
+    <fecthedData.Provider value={{ data, setData ,likeData,setLikeData,users,setUsers}}>
       {props.children}
     </fecthedData.Provider>
   );

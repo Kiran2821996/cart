@@ -8,17 +8,17 @@ import "./Cart.css";
 import { Card, Button } from "antd";
 
 function Cart() {
-  const { data, setData, setCart_items } = useContext(fecthedData);
+  const { data, setData } = useContext(fecthedData);
 
 
   useEffect(() => {
-    setCart_items([...data]);
+    setData([...data]);
   }, []);
 
   const handleClick = (item) => {
     data.splice(data.indexOf(item), 1);
     setData([...data]);
-    setCart_items([...data]);
+   
   };
   return (
     <div className="cart_display">
@@ -58,7 +58,7 @@ function Cart() {
         <Card>
           <h3>Order Summary</h3>
           <h4>Total Price :</h4>
-          <h2>₹{data.reduce((accu, cur) => accu + cur.price, 0)}</h2>
+          <h2>₹{data.reduce((accu, cur) => accu + cur.price, 0).toFixed(2)}</h2>
           <Button type="primary">CHECK OUT</Button>
           <h6>Tax Exclusive* added at checkout</h6>
         </Card>

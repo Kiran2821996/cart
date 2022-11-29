@@ -7,7 +7,6 @@ import Jwellery from "./Jwellery/Jwellery";
 import MensClothing from "./MensClothing/MensClothing";
 import WomensClothing from "./WomensClothing/WomensClothing";
 import Cart from "../header/cart/Cart";
-import Login from "../header/login/Login";
 import ShowFavt from "./favourites/ShowFavt";
 
 
@@ -16,13 +15,12 @@ function Main() {
   return (
     <div >
       <Routes>
-        <Route path="/" element={<All />} />
+        <Route path="/all" element={<All />} />
         <Route path="/electronics" element={<Electronics />} />
         <Route path="/jwellery" element={<Jwellery />} />
         <Route path="/mensClothing" element={<MensClothing />} />
         <Route path="/womensClothing" element={<WomensClothing />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/login" element={<Login />} />
         <Route path="/showfavt" element={<ShowFavt />} />
       </Routes>
     </div>
