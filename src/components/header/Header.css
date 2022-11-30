@@ -7,7 +7,7 @@ justify-content: space-between;
 .header_main_right{
   display: flex;
 justify-content: space-around;
-width: 30%;
+width: 50%;
 }
 .header_links {
   display: flex;
@@ -50,9 +50,7 @@ padding: 5%;
 }
 
 .display_user{
-  position: absolute;
-  top: 35px;
-  right: 400px;
+  
   color: white;
   font-size:medium;
   font-weight: bolder;

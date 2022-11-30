@@ -27,12 +27,12 @@ function Header() {
  
   return (
     <div>
-      <h4 className="display_user">Hello "{userName.firstName}":)</h4>
+     
      
       <div className="header_main">
       <h1 className="user_name">Shop_Lane</h1>
         <div className="header_main_right">
-     
+        <h4 className="display_user">Hello "{userName.firstName}":)</h4>
       <NavLink to={"./showfavt"} end className="nav_link" >
           <p>Favourites</p>
         </NavLink>

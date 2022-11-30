@@ -44,6 +44,7 @@ function Cart() {
                     color2={"#ffd700"}
                   />
                   {/* <IncDecItem priceData={item} /> */}
+                  <div><p>₹{item.price}</p></div>
                   <div onClick={(e) => handleClick(item)}>
                     <Button type="primary" danger>Remove</Button>
                   </div>
