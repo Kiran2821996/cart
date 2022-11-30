@@ -48,3 +48,12 @@ padding: 5%;
   font-style: italic;
   width: 20%;
 }
+
+.display_user{
+  position: absolute;
+  top: 35px;
+  right: 400px;
+  color: white;
+  font-size:medium;
+  font-weight: bolder;
+}

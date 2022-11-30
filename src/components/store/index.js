@@ -10,10 +10,10 @@ const DEFAULT_STATE = {
 const authReducer = (state = DEFAULT_STATE, action) => {
 
     if(action.type==='SET_LOGIN_DATA'){
-        return {"loggedInUser": action.payload}
+        return {...state,"loggedInUser": action.payload}
     }
     if(action.type==="setLogin"){
-        return {"login": action.payload}
+        return {...state,"login": action.payload}
     }
     return state
 }

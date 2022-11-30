@@ -3,11 +3,16 @@ import {fecthedData} from "../context/Context";
 import { ShoppingCartOutlined,LogoutOutlined} from '@ant-design/icons';
 import { NavLink} from "react-router-dom";
 import "./Header.css";
-import { useDispatch } from "react-redux";
+import { useDispatch ,useSelector} from "react-redux";
+
 
 
 function Header() {
   const {data} = useContext(fecthedData);
+  const userName = useSelector((state) => {
+    console.log(state)
+    return state.loggedInUser
+  })
   const dispatch = useDispatch();
  
   const handleLogout=()=>{
@@ -19,10 +24,10 @@ function Header() {
     dispatch(action);
    
   }
-  
+ 
   return (
     <div>
-      
+      <h4 className="display_user">Hello "{userName.firstName}":)</h4>
      
       <div className="header_main">
       <h1 className="user_name">Shop_Lane</h1>
