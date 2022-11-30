@@ -73,7 +73,7 @@ function ShowFavt() {
             <p>₹{item.price}</p>
             {data.filter((ele) => ele.id === item.id).length > 0 ? (
                 <div onClick={(e) => handleRemoveClick(item.id)}>
-                  <Button type="primary">Remove from Cart</Button>
+                  <Button type="primary" danger>Remove from Cart</Button>
                 </div>
               ) : (
                 <div onClick={(e) => handleAddClick(item)}>

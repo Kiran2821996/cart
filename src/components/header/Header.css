@@ -20,7 +20,7 @@ width: 30%;
 
 .nav_link{
   text-decoration: none;
-  
+  cursor: pointer;
 }
 .nav_link.active p{
 background-color: white;
