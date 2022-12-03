@@ -11,4 +11,7 @@ body{
   padding: 20px;
 }
 
-
+.empty{
+  margin-top: 10%;
+  text-align: center;
+}

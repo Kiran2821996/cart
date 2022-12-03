@@ -39,7 +39,7 @@ function ShowFavt() {
   }
   return (
     <div className="all_cards">
-    {likeData.map((item) => {
+    {likeData.length===0?<h2 className="empty">Add your Favourites</h2>:likeData.map((item) => {
       return (
         <div className="all_card" key={item.id}>
           <Card className="all_card_item">

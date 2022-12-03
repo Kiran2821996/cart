@@ -16,12 +16,15 @@ function Header() {
   const dispatch = useDispatch();
  
   const handleLogout=()=>{
-    let action = {
-      type: "setLogin",
-      payload: false,
-    };
-
-    dispatch(action);
+    let text = "You will be logged out!!!";
+    if (window.confirm(text) === true) {
+      let action = {
+        type: "setLogin",
+        payload: false,
+      };
+  
+      dispatch(action);
+    } 
    
   }
  
@@ -33,6 +36,7 @@ function Header() {
       <h1 className="user_name">Shop_Lane</h1>
         <div className="header_main_right">
         <h4 className="display_user">Hello "{userName.firstName}":)</h4>
+        <div className="nav_link_btn">
       <NavLink to={"./showfavt"} end className="nav_link" >
           <p>Favourites</p>
         </NavLink>
@@ -41,8 +45,9 @@ function Header() {
         </NavLink>
         <span className="nav_link" onClick={handleLogout}>
          
-          <p><LogoutOutlined />Log Out</p>
+          <p><LogoutOutlined /></p>
         </span>
+        </div>
         </div>
       </div>
       <div className="header_links">

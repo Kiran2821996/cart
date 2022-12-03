@@ -45,8 +45,10 @@ function Login() {
       dispatch(information);
       dispatch(action);
     } else {
-      alert("Incorrect User Credentials! Please SignUp");
-      setSignUp(!signUp);
+      let text = "Incorrect User Credentials! Need to SignUp??";
+      if (window.confirm(text) === true) {
+        setSignUp(!signUp);
+      }
     }
     navigate("/all");
   };
@@ -55,15 +57,17 @@ function Login() {
     setSignUp(!signUp);
   };
 
+  const handleBack=()=>{
+    setSignUp(!signUp);
+  }
+
   return (
     <>
-    <div className="login_page">
-    <h1 className="welcome">
-            Welcome to <span className="title">Shop_Lane</span>{" "}
-    </h1>
-    {!signUp ? (
-        
-         
+      <div className="login_page">
+        <h1 className="welcome">
+          Welcome to <span className="title">Shop_Lane</span>{" "}
+        </h1>
+        {!signUp ? (
           <Card className="login">
             <h2>Login</h2>
             <form onSubmit={handleLogin}>
@@ -114,134 +118,134 @@ function Login() {
               </div>
             </form>
           </Card>
-       
-      ) : (
-        <Card className="signUp">
-          <h2>Sign Up</h2>
-          <Formik
-            initialValues={{
-              firstName: "",
-              lastName: "",
-              email: "",
-              password: "",
-              confirmPassword: "",
-            }}
-            validationSchema={Yup.object({
-              firstName: Yup.string()
-                .max(15, "Must be 15 characters or less")
-                .required("Required"),
-              lastName: Yup.string()
-                .max(20, "Must be 20 characters or less")
-                .required("Required"),
-              email: Yup.string()
-                .email("Invalid email address")
-                .required("Required"),
-              password: Yup.string()
-                .required("No password provided")
-                .min(8, "Password is too short - should be 8 chars minimum.")
-                .matches(
-                  /[a-zA-Z]/,
-                  "Password can only contain Latin letters."
-                ),
-              confirmPassword: Yup.string()
-                .required("Confirm your password")
-                .oneOf([Yup.ref("password"), null], "Password not matched"),
-            })}
-            onSubmit={(values) => {
-              setUsers([...users, values]);
-              handleSignUp()
-              console.log(values);
-            }}
-          >
-            <Form className="regis_form">
-              <div className="spacebetween">
-                <label htmlFor="firstName">
-                  First Name<span className="star">*</span>
-                </label>
-                <Field name="firstName" type="text" />
-              </div>
-              <div className="er-msg">
-                {" "}
-                <ErrorMessage name="firstName" />
-              </div>
-
-              <div className="spacebetween">
-                <label htmlFor="lastName">
-                  Last Name<span className="star">*</span>
-                </label>
-                <Field name="lastName" type="text" />
-              </div>
-              <div className="er-msg">
-                {" "}
-                <ErrorMessage name="lastName" />
-              </div>
-
-              <div className="spacebetween">
-                <label htmlFor="email">
-                  Email Address<span className="star">*</span>
-                </label>
-                <Field name="email" type="email" />
-              </div>
-              <div className="er-msg">
-                {" "}
-                <ErrorMessage name="email" />
-              </div>
-              <div className="spacebetween">
-                <label htmlFor="password">
-                  Create Password<span className="star">*</span>
-                </label>
-
-                <Field
-                  name="password"
-                  type={passwordShown ? "text" : "password"}
-                />
-                <span className="np">
-                  {passwordShown ? (
-                    <EyeFilled className="eye" onClick={visiblity} />
-                  ) : (
-                    <EyeInvisibleFilled className="eye" onClick={visiblity} />
-                  )}
-                </span>
-              </div>
-              <div className="er-msg">
-                {" "}
-                <ErrorMessage name="password" />
-              </div>
-
-              <div className="spacebetween">
-                <label htmlFor="email">
-                  Confirm Password<span className="star">*</span>
-                </label>
-
-                <Field
-                  name="confirmPassword"
-                  type={passwordShown ? "text" : "password"}
-                />
-                <span className="cp">
-                  {passwordShown ? (
-                    <EyeFilled className="eye1" onClick={visiblity} />
-                  ) : (
-                    <EyeInvisibleFilled className="eye1" onClick={visiblity} />
-                  )}
-                </span>
-              </div>
-
-              <div className="er-msg">
-                {" "}
-                <ErrorMessage name="confirmPassword" />
-              </div>
+        ) : (
+          <Card className="signUp">
            
-             <button className="button" type="submit" >
-             <Button type="primary"  >
-            Sign Up
-            </Button>
-              </button>
-            </Form>
-          </Formik>
-        </Card>
-      )}
-    </div>
-     
+            <h2>Sign Up</h2>
+            <Formik
+              initialValues={{
+                firstName: "",
+                lastName: "",
+                email: "",
+                password: "",
+                confirmPassword: "",
+              }}
+              validationSchema={Yup.object({
+                firstName: Yup.string()
+                  .max(15, "Must be 15 characters or less")
+                  .required("Required"),
+                lastName: Yup.string()
+                  .max(20, "Must be 20 characters or less")
+                  .required("Required"),
+                email: Yup.string()
+                  .email("Invalid email address")
+                  .required("Required"),
+                password: Yup.string()
+                  .required("No password provided")
+                  .min(8, "Password is too short - should be 8 chars minimum.")
+                  .matches(
+                    /[a-zA-Z]/,
+                    "Password can only contain Latin letters."
+                  ),
+                confirmPassword: Yup.string()
+                  .required("Confirm your password")
+                  .oneOf([Yup.ref("password"), null], "Password not matched"),
+              })}
+              onSubmit={(values) => {
+                setUsers([...users, values]);
+                handleSignUp();
+                console.log(values);
+              }}
+            >
+              <Form className="regis_form">
+                <div className="spacebetween">
+                  <label htmlFor="firstName">
+                    First Name<span className="star">*</span>
+                  </label>
+                  <Field name="firstName" type="text" />
+                </div>
+                <div className="er-msg">
+                  {" "}
+                  <ErrorMessage name="firstName" />
+                </div>
+
+                <div className="spacebetween">
+                  <label htmlFor="lastName">
+                    Last Name<span className="star">*</span>
+                  </label>
+                  <Field name="lastName" type="text" />
+                </div>
+                <div className="er-msg">
+                  {" "}
+                  <ErrorMessage name="lastName" />
+                </div>
+
+                <div className="spacebetween">
+                  <label htmlFor="email">
+                    Email Address<span className="star">*</span>
+                  </label>
+                  <Field name="email" type="email" />
+                </div>
+                <div className="er-msg">
+                  {" "}
+                  <ErrorMessage name="email" />
+                </div>
+                <div className="spacebetween">
+                  <label htmlFor="password">
+                    Create Password<span className="star">*</span>
+                  </label>
+
+                  <Field
+                    name="password"
+                    type={passwordShown ? "text" : "password"}
+                  />
+                  <span className="np">
+                    {passwordShown ? (
+                      <EyeFilled className="eye" onClick={visiblity} />
+                    ) : (
+                      <EyeInvisibleFilled className="eye" onClick={visiblity} />
+                    )}
+                  </span>
+                </div>
+                <div className="er-msg">
+                  {" "}
+                  <ErrorMessage name="password" />
+                </div>
+
+                <div className="spacebetween">
+                  <label htmlFor="email">
+                    Confirm Password<span className="star">*</span>
+                  </label>
+
+                  <Field
+                    name="confirmPassword"
+                    type={passwordShown ? "text" : "password"}
+                  />
+                  <span className="cp">
+                    {passwordShown ? (
+                      <EyeFilled className="eye1" onClick={visiblity} />
+                    ) : (
+                      <EyeInvisibleFilled
+                        className="eye1"
+                        onClick={visiblity}
+                      />
+                    )}
+                  </span>
+                </div>
+
+                <div className="er-msg">
+                  {" "}
+                  <ErrorMessage name="confirmPassword" />
+                </div>
+                <button style={{cursor:"pointer"}} onClick={handleBack}>Back to Login</button>
+                <button className="button" type="submit">
+                  <Button type="primary">Sign Up</Button>
+                </button>
+              </Form>
+            </Formik>
+          </Card>
+        )}
+      </div>
     </>
   );
 }

@@ -17,8 +17,16 @@ width: 50%;
   border: 5px solid black;
 
 }
-
+.nav_link_btn{
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 50%;
+  border: 5px solid black;
+}
 .nav_link{
+  padding: 1%;
   text-decoration: none;
   cursor: pointer;
 }
@@ -26,8 +34,6 @@ width: 50%;
 background-color: white;
 color: black;
 border: 3px solid black;
-width: 95%;
-padding: 5%;
 }
 
 .nav_link p{
