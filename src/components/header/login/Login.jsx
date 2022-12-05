@@ -8,6 +8,7 @@ import * as Yup from "yup";
 import { Card, Button } from "antd";
 import "./Login.css";
 import { EyeFilled, EyeInvisibleFilled } from "@ant-design/icons";
+import { useEffect } from "react";
 
 function Login() {
   let navigate = useNavigate();
@@ -19,6 +20,13 @@ function Login() {
   const visiblity = () => {
     setPasswordShown(!passwordShown);
   };
+console.log(users)
+  const handleUser=(values)=>{
+    setUsers([...users, values]);
+    handleSignUp();
+    localStorage.setItem("userData", JSON.stringify([...users,values]) );
+  }
+ 
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -152,9 +160,8 @@ function Login() {
                   .oneOf([Yup.ref("password"), null], "Password not matched"),
               })}
               onSubmit={(values) => {
-                setUsers([...users, values]);
-                handleSignUp();
-                console.log(values);
+                handleUser(values)
+                
               }}
             >
               <Form className="regis_form">
