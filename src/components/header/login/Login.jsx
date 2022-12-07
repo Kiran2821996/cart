@@ -8,7 +8,6 @@ import * as Yup from "yup";
 import { Card, Button } from "antd";
 import "./Login.css";
 import { EyeFilled, EyeInvisibleFilled } from "@ant-design/icons";
-import { useEffect } from "react";
 
 function Login() {
   let navigate = useNavigate();
@@ -24,7 +23,6 @@ console.log(users)
   const handleUser=(values)=>{
     setUsers([...users, values]);
     handleSignUp();
-    localStorage.setItem("userData", JSON.stringify([...users,values]) );
   }
  
 
