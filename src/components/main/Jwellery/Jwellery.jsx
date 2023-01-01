@@ -3,6 +3,7 @@ import { fecthedData } from "../../context/Context";
 import axios from "axios";
 import ReactStars from "react-stars";
 import { HeartOutlined , HeartFilled } from '@ant-design/icons';
+import { LineWave} from  'react-loader-spinner';
 
 import { Card, Button } from "antd";
 
@@ -48,7 +49,8 @@ function Jwellery() {
   }
   return (
     <div className="all_cards">
-      {jwellery.map((item) => {
+      {jwellery.length>0?
+      jwellery.map((item) => {
         return (
           <div className="all_card" key={item.id}>
             <Card className="all_card_item">
@@ -99,7 +101,18 @@ function Jwellery() {
             </Card>
           </div>
         );
-      })}
+      }): <LineWave
+      height="100"
+      width="100"
+      color="black"
+      ariaLabel="line-wave"
+      wrapperStyle={{}}
+      wrapperClass=""
+      visible={true}
+      firstLineColor=""
+      middleLineColor=""
+      lastLineColor=""
+    />}
     </div>
   );
 }

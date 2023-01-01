@@ -5,6 +5,8 @@ body{
   height: 25vh;
   background-color:rgb(116, 116, 116);
   padding: 1%;
+  border: 5px solid black;
+  border-radius: 10px;
 }
 
 .body{
