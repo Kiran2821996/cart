@@ -1,53 +1,68 @@
-import React,{useContext} from "react";
-import {fecthedData} from "../context/Context";
-import { ShoppingCartOutlined,LogoutOutlined} from '@ant-design/icons';
-import { NavLink} from "react-router-dom";
+import React, { useContext } from "react";
+import { fecthedData } from "../context/Context";
+import { ShoppingCartOutlined, LogoutOutlined,LoginOutlined} from "@ant-design/icons";
+import { NavLink } from "react-router-dom";
 import "./Header.css";
-import { useDispatch ,useSelector} from "react-redux";
-
-
+import { useDispatch, useSelector } from "react-redux";
 
 function Header() {
-  const {data} = useContext(fecthedData);
+  const { data } = useContext(fecthedData);
   const userName = useSelector((state) => {
-    console.log(state)
-    return state.loggedInUser
-  })
+    console.log(state);
+    return state.loggedInUser;
+  });
   const dispatch = useDispatch();
- 
-  const handleLogout=()=>{
+
+  const handleLogout = () => {
     let text = "You will be logged out!!!";
     if (window.confirm(text) === true) {
       let action = {
         type: "setLogin",
         payload: false,
       };
-  
+
       dispatch(action);
-    } 
-   
-  }
- 
+    }
+  };
+  const handleLogin = () => {
+    let action = {
+      type: "setLogin",
+      payload: false,
+    };
+
+    dispatch(action);
+  };
+
   return (
     <div>
-     
-     
       <div className="header_main">
-      <h1 className="user_name">Shop_Lane</h1>
+        <h1 className="user_name">Shop_Lane</h1>
         <div className="header_main_right">
-        <h4 className="display_user">Hello "{userName?userName.firstName:"Guest"}":)</h4>
-        <div className="nav_link_btn">
-      <NavLink to={"./showfavt"} end className="nav_link" >
-          <p>Favourites</p>
-        </NavLink>
-        <NavLink to={"./cart"} end className="nav_link" >
-          <p><ShoppingCartOutlined /><sup>{data.length}</sup></p>
-        </NavLink>
-        <span className="nav_link" onClick={handleLogout}>
-         
-          <p><LogoutOutlined /></p>
-        </span>
-        </div>
+          <h4 className="display_user">
+            Hello "{userName ? userName.firstName : "Guest"}":)
+          </h4>
+          <div className="nav_link_btn">
+            <NavLink to={"./showfavt"} end className="nav_link">
+              <p>Favourites</p>
+            </NavLink>
+            <NavLink to={"./cart"} end className="nav_link">
+              <p>
+                <ShoppingCartOutlined />
+                <sup>{data.length}</sup>
+              </p>
+            </NavLink>
+            {userName ? (
+              <span className="nav_link" onClick={handleLogout}>
+                <p>
+                  <LogoutOutlined />
+                </p>
+              </span>
+            ) : (
+              <span className="nav_link" onClick={handleLogin}>
+                <p><LoginOutlined /></p>
+              </span>
+            )}
+          </div>
         </div>
       </div>
       <div className="header_links">
@@ -68,8 +83,6 @@ function Header() {
         </NavLink>
       </div>
     </div>
-    
-    
   );
 }
 

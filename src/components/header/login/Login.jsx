@@ -67,11 +67,16 @@ console.log(users)
     setSignUp(!signUp);
   }
   const handleGuest=()=>{
+    let information = {
+      type: "SET_LOGIN_DATA",
+      payload:null,
+    };
     let action = {
       type: "setLogin",
       payload: true,
     };
     dispatch(action);
+    dispatch(information);
     navigate("/all");
   }
 
