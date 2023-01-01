@@ -66,6 +66,14 @@ console.log(users)
   const handleBack=()=>{
     setSignUp(!signUp);
   }
+  const handleGuest=()=>{
+    let action = {
+      type: "setLogin",
+      payload: true,
+    };
+    dispatch(action);
+    navigate("/all");
+  }
 
   return (
     <>
@@ -120,6 +128,9 @@ console.log(users)
                 </span>
                 <span onClick={handleSignUp}>
                   <Button type="primary">Sign Up</Button>
+                </span>
+                <span onClick={handleGuest}>
+                  <Button type="primary">Guest</Button>
                 </span>
               </div>
             </form>

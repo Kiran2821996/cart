@@ -35,7 +35,7 @@ function Header() {
       <div className="header_main">
       <h1 className="user_name">Shop_Lane</h1>
         <div className="header_main_right">
-        <h4 className="display_user">Hello "{userName.firstName}":)</h4>
+        <h4 className="display_user">Hello "{userName?userName.firstName:"Guest"}":)</h4>
         <div className="nav_link_btn">
       <NavLink to={"./showfavt"} end className="nav_link" >
           <p>Favourites</p>
